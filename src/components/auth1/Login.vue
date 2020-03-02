@@ -5,7 +5,7 @@
       <b-col sm="12" md="4">
         <b-card class="mt-3" header="Login">
           <b-card-text>
-            <b-form @submit="onSubmit" @reset="onReset">
+            <b-form @submit="onSubmit" @reset="onReset" v-if="show">
               <b-form-group
                 id="input-group-1"
                 label="Email address:"
@@ -37,8 +37,11 @@
               <b-button type="submit" variant="primary">Submit</b-button>
               <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
+            
           </b-card-text>
+         
         </b-card>
+
       </b-col>
       <b-col></b-col>
     </b-row>
@@ -52,27 +55,29 @@
         form: {
           email: '',
           password: ''
-        }
+        },
+        show: true
       }
     },
     methods: {
       onSubmit(evt) {
-        evt.preventDefault();
-          let data = {
-              client_id : 2,
-              client_secret : 'V73CtmuUVqA9qawkRyGKyV3PFarjiZTXDD2Ga5Fp',
-              grant_type : 'password',
-              username : this.form.email,
-              password : this.form.password,
-          };
-          this.$store.dispatch('login', data);
+        evt.preventDefault()
+        //alert(JSON.stringify(this.form))
       },
       onReset(evt) {
         evt.preventDefault();
         // Reset our form values
         this.form.email = '';
         this.form.password = '';
+        // Trick to reset/clear native browser form validation state
+       // this.show = false;
+        //this.$nextTick(() => {
+       //  this.show = true
+       // })
       }
     }
   }
+
+
+
 </script>

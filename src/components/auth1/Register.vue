@@ -49,7 +49,7 @@
               <b-button type="submit" variant="primary">Submit</b-button>
               <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
-          </b-card-text>
+          </b-card-text>         
         </b-card>
 
       </b-col>
@@ -68,7 +68,7 @@
           role: null,
           checked: []
         },
-        roles: [{ text: 'Select One', value: null }, 'Admin', 'Editor', 'Guest'],
+        roles: [{ text: 'Select One', value: null, disabled: true, selected: true  }, 'Admin', 'Editor', 'Guest'],
         show: true
       }
     },
@@ -86,9 +86,9 @@
         this.form.checked = [];
         // Trick to reset/clear native browser form validation state
         this.show = false;
-       // this.$nextTick(() => {
-        //  this.show = true
-        // })
+        this.$nextTick(() => {
+          this.show = true
+        })
       }
     }
   }

@@ -12,6 +12,9 @@
   export default {
     components: {
       'navbar': Navbar,
+    },
+    created() {
+      this.$store.dispatch('tryAutoLogin')
     }
   }
 </script>
@@ -19,10 +22,6 @@
 <style>
 </style>
 
-
-
-
- 
 
 <!-- 
 <template>
